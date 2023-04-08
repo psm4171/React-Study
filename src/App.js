@@ -7,13 +7,14 @@ function App() {
   let [글제목, 글제목변경] = useState(['리액트','자바스크립트','Node Js']); // useState(보관할 자료) 
   let [따봉, 따봉변경] = useState(0);
 
+  let [modal, setModal] = useState(false); // ui상태 열림true/닫힘false 
+
   return (
     <div className="App">
       <div className="black-nav">
 
          <h3 style = {{color: 'white', fontSize: '16px'}} >승민's 블로그</h3> 
       </div>
-
       
       {/* // 글제목[0] = 'Node js'; 이렇게 원본 데이터에서 수정하는 것보다 
       // [...] 이렇게 작성해야 함 -> state 변경함수가 새로 적용됨 
@@ -42,12 +43,15 @@ function App() {
       </div>
 
       <div className="list">
-        <h4> { 글제목[2] } <button onClick={ ()=>{ 따봉변경(따봉 + 1) } } >좋아요👍</button> { 따봉 }</h4>
+        <h4 onClick={()=> {setModal(!modal) } }> { 글제목[2] } <button onClick={ ()=>{ 따봉변경(따봉 + 1) } } >좋아요👍</button> { 따봉 }</h4>
+
         <p> 5.5일</p>
       </div>
       
-      <Modal></Modal>
-
+      {
+      (modal == true ? <Modal/> : null)
+        }
+      
 </div>
 
  );
