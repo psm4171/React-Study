@@ -45,9 +45,29 @@ function App() {
         <h4> { 글제목[2] } <button onClick={ ()=>{ 따봉변경(따봉 + 1) } } >좋아요👍</button> { 따봉 }</h4>
         <p> 5.5일</p>
       </div>
-    
+      
+      <Modal></Modal>
+
 </div>
 
  );
 }
+
+// 컴포넌트 - 모달 함수, 다른 함수 바깥에 만들것 
+// 컴포넌트는 반복적인 html 축약할 때 사용 
+// 큰 페이지를 전환할 때
+// 자주 변경되는 것들
+
+
+function Modal(){
+
+  return(
+    <div className="modal">
+        <h4>제목</h4>
+        <p>날짜</p>
+        <p>상세내용</p>
+      </div>
+  )
+}
+
 export default App;
