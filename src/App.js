@@ -5,9 +5,11 @@ import { useState } from 'react'; // 변수가 변하더라도 자동으로 재�
 function App() {
 
   let [글제목, 글제목변경] = useState(['리액트','자바스크립트','Node Js']); // useState(보관할 자료) 
-  let [따봉, 따봉변경] = useState(0);
+  let [따봉, 따봉변경] = useState([0,0,0,0]);
 
   let [modal, setModal] = useState(false); // ui상태 열림true/닫힘false 
+
+  // map 함수를 이용하여 반복 작업 줄임 
 
   return (
     <div className="App">
@@ -32,7 +34,7 @@ function App() {
      }}>'가나다순 정렬'</button>
 
 
-     <div className="list">
+     {/* <div className="list">
       <h4> { 글제목[0] } <button onClick={ ()=>{ 따봉변경(따봉 + 1) } } >좋아요👍</button> { 따봉 }</h4>
       <p> 4.19일 </p>
       </div>
@@ -46,13 +48,44 @@ function App() {
         <h4 onClick={()=> {setModal(!modal) } }> { 글제목[2] } <button onClick={ ()=>{ 따봉변경(따봉 + 1) } } >좋아요👍</button> { 따봉 }</h4>
 
         <p> 5.5일</p>
-      </div>
+      </div> */}
       
       {
       (modal == true ? <Modal/> : null)
         }
+
+{
+  // 반복 생성한 ui마다 각각의 다른 key값을 설정해줘야 함
+  // map 반복문으로 반복생성한 html엔 key={i} 이런 속성을 추가해야 함.
+          글제목.map(function(a, i){
+            return (
+
+              <div className="list" key={i}> 
+            <h4 onClick={()=> {setModal(!modal) } }></h4>
+                
+                <h4>
+                  {글제목[i]}
+                  <button onClick={()=> {
+                  let copy = [...따봉];
+                  copy[i] = copy[i]+ 1; 
+                  따봉변경(copy)
+                  }}>좋아요👍</button> {따봉[i]}
+                </h4>
+
+            <p> 6.12일</p>
+             </div>
+
+             
+
+            )
+          })
+        }
+
+       
       
 </div>
+
+       
 
  );
 }
