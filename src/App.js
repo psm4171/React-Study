@@ -4,11 +4,11 @@ import { useState } from 'react'; // 변수가 변하더라도 자동으로 재�
 
 function App() {
 
-  let [글제목, 글제목변경] = useState(['리액트','자바스크립트','Node Js']); // useState(보관할 자료) 
+  let [글제목, 글제목변경] = useState(['리액트','자바스크립트','Node Js','Mogo DB']); // useState(보관할 자료) 
   let [따봉, 따봉변경] = useState([0,0,0,0]);
 
   let [modal, setModal] = useState(false); // ui상태 열림true/닫힘false 
-
+  let [title] = useState(0); //0이면 0번째 제목 
   // map 함수를 이용하여 반복 작업 줄임 
 
   return (
@@ -51,7 +51,7 @@ function App() {
       </div> */}
       
       {
-      (modal == true ? <Modal/> : null)
+      (modal == true ? <Modal title={title} 글제목={글제목}/> : null)
         }
 
 {
@@ -80,12 +80,8 @@ function App() {
             )
           })
         }
-
-       
       
 </div>
-
-       
 
  );
 }
@@ -96,13 +92,14 @@ function App() {
 // 자주 변경되는 것들
 
 
-function Modal(){
+function Modal(props){ // props로 전송 
 
   return(
     <div className="modal">
-        <h4>제목</h4>
+        <h4>{props.글제목[props.title]}</h4> 
         <p>날짜</p>
         <p>상세내용</p>
+        <button onClick={()=> props.글제목변경(['리액트를 활용한 웹 개발'])} >글수정</button>
       </div>
   )
 }
