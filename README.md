@@ -68,3 +68,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### 동적인 UI 생성
+1. html css로 미리 디자인 
+2. 현재 UI 상태를 state에 저장해둠 
+3. state에 따라 UI가 어떻게 보일지 작성
