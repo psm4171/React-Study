@@ -34,18 +34,6 @@ function App() {
       글제목변경(copy)
      }}>'가나다순 정렬'</button> 
 
-
-
-
-      {/* <button onClick={()=>{setTitle(0)}}> 글제목0</button>
-      <button onClick={()=>{setTitle(1)}}> 글제목1</button>
-      <button onClick={()=>{setTitle(2)}}> 글제목2</button> */}
-
-     
-      
-      
-
-
 { // array 갯수만큼 반복  
   // 반복 생성한 ui마다 각각의 다른 key값을 설정해줘야 함
   // map 반복문으로 반복생성한 html엔 key={i} 이런 속성을 추가해야 함.
@@ -53,7 +41,7 @@ function App() {
           글제목.map(function(a, i){
             return (
               <div className="list" key={i}> 
-            <h4 onClick={()=> {setModal(!modal) } }>{글제목[i]} </h4> 
+            <h4 onClick={()=> {setModal(!modal); setTitle(i) } }>{글제목[i]} </h4> 
                 <h4>
                   <button onClick={()=> {
                   let copy = [...따봉];
@@ -71,7 +59,8 @@ function App() {
         }
 
 {
-          modal == true ? <Modal/> : null 
+        //   modal == true ? <Modal/> : null 
+        modal == true ? <Modal title={title} 글제목={글제목}/> : null 
         }
        
         
@@ -87,25 +76,14 @@ function App() {
 // 큰 페이지를 전환할 때
 // 자주 변경되는 것들
 
-
-// function Modal(props){ // props로 전송 
-
-//   return(
-//     <div className="modal">
-//         <h4>{props.글제목[props.title]}</h4> 
-//         <p>날짜</p>
-//         <p>상세내용</p>
-//         <button onClick={()=> props.글제목변경(['리액트를 활용한 웹 개발'])} >글수정</button>
-//       </div>
-//   )
-// }
-
+// props를 통해 전송
 function Modal(props){
   return (
     <div className="modal">
-      <h4>글제목</h4>
+      <h4>{props.글제목[props.title]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
+     
     </div>
   )
 }
