@@ -82,6 +82,8 @@ let [title, setTitle] = useState(0); --> 0이면 0번째 제목 해당
         modal == true ? <Modal title={title} 글제목={글제목}/> : null 
         }
         
+        
+ --> props를 통해서 글제목의 인자를 전달 
  function Modal(props) {
  return (
  <div className="modal">
