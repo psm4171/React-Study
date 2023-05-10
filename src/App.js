@@ -77,6 +77,7 @@ function App() {
 // 자주 변경되는 것들
 
 // props를 통해 전송
+// Modal 함수 
 function Modal(props){
   return (
     <div className="modal">
