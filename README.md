@@ -95,6 +95,14 @@ let [title, setTitle] = useState(0); --> 0이면 0번째 제목 해당
  
  )
  }
+ 
+### 사용자가 input에 입력한 데이터 저장하기 
+let [입력값, 입력값변경] = useState(''); // state값 생
+onChange될 때 마다 state에 e.target.value 
+<input onChange={(e)=>{입력값변경(e.target.value); 
+      console.log(입력값) }} 
+      />
+ 
 
 
 
