@@ -73,3 +73,36 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 1. html css로 미리 디자인 
 2. 현재 UI 상태를 state에 저장해둠 
 3. state에 따라 UI가 어떻게 보일지 작성
+
+-Modal
+let [modal, setModal] = useState(false); --> ui상태 열림true/닫힘false
+let [title, setTitle] = useState(0); --> 0이면 0번째 제목 해당
+
+ {
+        modal == true ? <Modal title={title} 글제목={글제목}/> : null 
+        }
+        
+        
+ --> props를 통해서 글제목의 인자를 전달 
+ function Modal(props) {
+ return (
+ <div className="modal">
+      <h4>{props.글제목[props.title]}</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+     
+    </div>
+ 
+ )
+ }
+ 
+### 사용자가 input에 입력한 데이터 저장하기 
+let [입력값, 입력값변경] = useState(''); // state값 생
+onChange될 때 마다 state에 e.target.value 
+<input onChange={(e)=>{입력값변경(e.target.value); 
+      console.log(입력값) }} 
+      />
+ 
+
+
+
